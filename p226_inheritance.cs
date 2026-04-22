@@ -2,7 +2,7 @@ public class Inheritance
 {
     public static void Run()
     {
-        Pack pack = new Pack(0, 0, 0);
+        Pack pack = new Pack(5, 20, 20);
         while (true)
         {
             Console.WriteLine("What do you want to do? 1. Check your bag. / 2. Add an item");
@@ -32,7 +32,6 @@ public class Inheritance
             else
             {
                 Console.WriteLine("Invalid choice. Please choose 1 or 2.");
-
             }
         }
     }
@@ -60,8 +59,9 @@ public class Inheritance
 
         public bool Add(InventoryItem item)
         {
-            if (TotalItemLimit + item.ItemWeight < currentTotalItem)
+            if ((currentTotalItem + 1 > TotalItemLimit) || (currentTotalWeight + item.ItemWeight > WeightLimit) || (currentTotalVolumn + item.ItemVolumn > VolumnLimit))
             {
+                Console.WriteLine("You cannot add this item. It will exceed the total item limit.");
                 return false;
             }
             else
@@ -69,6 +69,7 @@ public class Inheritance
                 currentTotalItem += 1;
                 currentTotalWeight += item.ItemWeight;
                 currentTotalVolumn += item.ItemVolumn;
+                Console.WriteLine($"Item {item} added successfully.");
                 return true;
             }
         }

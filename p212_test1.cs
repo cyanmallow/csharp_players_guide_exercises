@@ -10,7 +10,6 @@ public class test1Program
     }
 }
 
-
 public class Point
 {
     public int x;
